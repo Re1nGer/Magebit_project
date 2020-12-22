@@ -1,13 +1,8 @@
 <?php
-    include("connection.php"); 
-
-    $sql = 'SELECT * FROM email_subscriptions ORDER BY id'; 
-    
-    $result = mysqli_query($conn, $sql); 
-
-    $emails = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-
-    mysqli_free_result($result); 
+    require_once 'config.php'; 
+    require_once 'Classes/database.class.php'; 
+    $db = new database($pdo); 
+    $data = $db->getData();  
 
 ?>
 
@@ -18,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<script defer src = "javascript/table.js"></script>
+<script defer src = "Assets/javascript/table.js"></script>
 <body>
 <table id = "table">
     <tr>
@@ -29,7 +24,7 @@
     </tr>
     <tbody>
     <tr>
-    <?php foreach($emails as $email){?>
+    <?php foreach($data as $email){?>
         <td><?php echo htmlspecialchars($email['id']) ?></td>
         <td><?php echo htmlspecialchars($email['email']) ?></td>
         <td><?php echo htmlspecialchars($email['provider']) ?></td>
@@ -39,6 +34,9 @@
     </tbody>
 </table>
 <div id = "button_provider">
+    <?php foreach($data as $email){?>
+    <button><?php echo htmlspecialchars($email['provider']) ?></button>
+    <?php }?>
 
 </div>
 <div>

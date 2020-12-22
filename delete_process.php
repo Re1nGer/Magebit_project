@@ -1,13 +1,10 @@
 <?php
-    include("connection.php"); 
+    require_once 'config.php'; 
+    require_once 'Classes/database.class.php'; 
 
-    $id = (isset($_POST['id']) ? $_POST['id'] : ''); 
-    
-    $sql = "DELETE FROM email_subscriptions where id ='" . $id ."'"; 
-    if(mysqli_query($conn, $sql)) {
-        echo "Record deleted successfully"; 
-    }  else {
-        echo "Error deleting record: " . mysqli_error($conn);
-    }
-    mysqli_close($conn);
+    $db = new database($pdo); 
+    $id = (($_POST['id']) ?? ''); 
+    $db->deleteRecord($id); 
+
+    $pdo = null;
 ?>

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Successful Subscription</title>
-  </head>
-  <body>
-    <div class="first-half">
+<div class="first-half">
         <nav>
             <div class="pineapple-left">  
                 <span class="pineapple"></span>
@@ -26,7 +17,6 @@
                 <div class="title-2">
                     <p>You have successfully subscribed to our email listing. Check your email for the discount code.</p>
                 </div>
-            
                   <hr/>
                   <div class="social-buttons">
                   <div id="facebook" class="social-button"><span class="icon-ic_facebook"></span></div>
@@ -40,4 +30,3 @@
               <div class="second-half"></div>
             </main>
   </body>
-</html>

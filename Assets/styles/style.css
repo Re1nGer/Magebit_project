@@ -1,6 +1,107 @@
-@import url("variable_&_icons.css");
-@import url("mobile_version.css");
-@import url("button_hover.css");
+:root {
+  --color-primary: #4066a5;
+  --color-primary-dark: #131821;
+  --color-primary-grey: #6a707b;
+  --color-primary-light-grey: #e3e3e4;
+  --color-primary-gradient: #f2f5fa;
+  --color-primary-white: #ffffff;
+  --color-facebook-hover: #4267b2;
+  --color-instagram-hover: #c13584;
+  --color-twitter-hover: #1da1f2;
+  --color-youtube-hover: #ff0000;
+  --color-facebook-pressed: #2f4a80;
+  --color-instagram-pressed: #8f2762;
+  --color-twitter-pressed: #177fbf;
+  --color-youtube-pressed: #cc0000;
+}
+/* A font with custom icons */
+@font-face {
+  font-family: "icomoon";
+  src: url("../fonts/icomoon.eot?8kbg9f");
+  src: url("../fonts/icomoon.eot?8kbg9f#iefix") format("embedded-opentype"),
+    url("../fonts/icomoon.ttf?8kbg9f") format("truetype"),
+    url("../fonts/icomoon.woff?8kbg9f") format("woff"),
+    url("../fonts/icomoon.svg?8kbg9f#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ic_successful_sub:before {
+  content: "\e904";
+  color: var(--color-primary);
+}
+.icon-ic_arrow:before {
+  content: "\e903";
+}
+.icon-ic_facebook:before {
+  content: "\e900";
+}
+.icon-ic_twitter:before {
+  content: "\e901";
+}
+.icon-ic-instagram:before {
+  content: "\e902";
+}
+.icon-ic-youtube:before {
+  content: "\1f324";
+}
+
+.social-buttons > * span {
+  opacity: 0.3;
+}
+
+.social-buttons > *:hover span {
+  color: var(--color-primary-white);
+  opacity: 1;
+}
+.social-button#facebook:hover {
+  background-color: var(--color-facebook-hover);
+}
+
+.social-button#twitter:hover {
+  background-color: var(--color-twitter-hover);
+}
+
+.social-button#youtube:hover {
+  background-color: var(--color-youtube-hover);
+}
+
+.social-button#instagram:hover {
+  background-color: var(--color-instagram-hover);
+}
+
+.social-button#facebook:active {
+  background-color: var(--color-facebook-pressed);
+}
+
+.social-button#instagram:active {
+  background-color: var(--color-instagram-pressed);
+}
+
+.social-button#twitter:active {
+  background-color: var(--color-twitter-pressed);
+}
+
+.social-button#youtube:active {
+  background-color: var(--color-youtube-pressed);
+}
 
 * {
   padding: 0;
@@ -26,7 +127,7 @@ nav {
 }
 
 .pineapple {
-  background-image: url("../src/Union.png");
+  background-image: url("../icons&pictures/Union.png");
   height: 40px;
   width: 25px;
   position: relative;
@@ -75,7 +176,7 @@ nav {
 
 .second-half {
   flex: 0 1 77vw;
-  background-image: url("../src/image_summer.jpg");
+  background-image: url("../icons&pictures/image_summer.jpg");
   background-repeat: no-repeat;
 }
 
@@ -250,8 +351,9 @@ hr {
 /* Hide the browser's default checkbox */
 .container input {
   position: absolute;
-  opacity: 1;
+  opacity: 0;
   cursor: pointer;
+  display: none;
 }
 
 /* Create a custom checkbox */
@@ -266,29 +368,24 @@ hr {
   cursor: pointer;
 }
 
-/* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
   background-color: var(--color-primary-light-grey);
 }
 
-/* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
   background-color: var(--color-primary);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the checkmark when checked */
 .container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the checkmark/indicator */
 .container .checkmark:after {
   left: 9px;
   top: 5px;
@@ -299,4 +396,103 @@ hr {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    background: var(--color-primary-white);
+  }
+
+  .first-half {
+    flex: 0 1 100vw;
+    background-image: url("../icons&pictures/image_summer\ \(1\).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+  }
+
+  .second-half {
+    display: none;
+  }
+  .subscribe {
+    margin-top: 0;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      var(--color-primary-white) 0%,
+      var(--color-primary-gradient) 100%
+    );
+  }
+
+  .successful_icon_wrapper {
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+  .title-1 {
+    font-size: 24px;
+    line-height: 34px;
+    text-align: left;
+    margin: 30px 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .title-2 {
+    text-align: left;
+    padding-top: 10px;
+    margin-left: 1.5rem;
+  }
+
+  .title-2 p {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0;
+  }
+
+  input[type="text"] {
+    margin: 20px;
+    padding: 18px 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-grow: 1;
+  }
+
+  input[type="text"]::placeholder {
+    font-size: 16px;
+  }
+
+  hr {
+    margin: 30px 1.2rem;
+  }
+  main {
+    padding: 0 120px;
+    padding-top: 100px;
+  }
+  .terms-services {
+    text-align: left;
+    margin-left: 3rem;
+  }
+
+  .checkbox-container {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+
+  .container {
+    margin-left: 1rem;
+  }
+  .social-buttons {
+    margin-bottom: 30px;
+  }
+
+  .wrapper {
+    margin: 0;
+  }
+
+  .wrapper span {
+    right: 3.5rem;
+  }
 }
