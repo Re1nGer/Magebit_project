@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Dec 23, 2020 at 03:12 AM
+-- Generation Time: Dec 23, 2020 at 03:19 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -32,7 +32,16 @@ CREATE TABLE `email_subscriptions` (
   `email` varchar(255) NOT NULL,
   `provider` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
--- Error reading data for table magebit_project.email_subscriptions: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '10' at line 1
+
+--
+-- Dumping data for table `email_subscriptions`
+--
+
+INSERT INTO `email_subscriptions` (`id`, `email`, `provider`) VALUES
+(18, 'bekjon_98@mail.ru', '@mail.ru'),
+(83, 'simon_93@yahoo.com', '@yahoo.com'),
+(97, 'student@turiba.lv', '@turiba.lv'),
+(112, 'dummyMail@inbox.com', '@inbox.com');
 
 --
 -- Indexes for dumped tables
