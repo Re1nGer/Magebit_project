@@ -1,9 +1,8 @@
-<?php
-    require_once 'config.php'; 
+<?php 
     require_once 'Classes/database.class.php'; 
-    $db = new database($pdo); 
-    $data = $db->getData();  
-
+    $db = new database(); 
+    $data = $db->getAllRecords();  
+    $distinctProviders = $db->getDistinctProviders(); 
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +33,7 @@
     </tbody>
 </table>
 <div id = "button_provider">
-    <?php foreach($data as $email){?>
+    <?php foreach($distinctProviders as $email){?>
     <button><?php echo htmlspecialchars($email['provider']) ?></button>
     <?php }?>
 

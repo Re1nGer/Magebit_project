@@ -4,7 +4,10 @@ let message = document.getElementById("message");
 let errorMessage = "";
 let causeOfError = "";
 
-form_submit.addEventListener("input", function (event) {
+//handling real-time validation of the email input field
+form_submit.addEventListener("input", input);
+
+function input(event) {
   event.preventDefault();
   validate();
   switch (causeOfError) {
@@ -25,8 +28,8 @@ form_submit.addEventListener("input", function (event) {
     message.textContent = errorMessage;
     form_submit.style.backgroundColor = "#FFFFFF";
   }
-});
-
+}
+//handling submission of the form by pressig Enter key
 form_submit.addEventListener("keypress", function (event) {
   if (event.code === "Enter") {
     event.preventDefault();
@@ -36,6 +39,7 @@ form_submit.addEventListener("keypress", function (event) {
   }
 });
 
+// function which validates email input field
 function validate() {
   const regular_expression = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const valueInput = form_submit.value;

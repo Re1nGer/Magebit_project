@@ -2,9 +2,10 @@
 
     class emailValidation {
         protected $data; 
-        protected $errors =[]; 
-        
+        protected $errors = []; 
+        protected $prohibitedProviders = array("Columbia" => "co"); 
 
+        
         public function __construct($post_data) {
             $this->data = $post_data; 
         }
@@ -18,15 +19,14 @@
 
         private function validateEmail() {
             $input_value = $this->data['email-input']; 
+            $provider = substr($input_value, strlen($input_value)-2, 2); 
             if(empty($input_value)) {
                 $this->addError('email-input', 'email cannot be empty'); 
             }  
             if(!filter_var($input_value, FILTER_VALIDATE_EMAIL)) {
                 $this->addError('email-input', "email must be valid"); 
                 }
-            if(substr($input_value,strlen($input_value)-2, 2) == "co") {
-                $this->addError('email-input', 'We are not accepting subscriptions from Columbia emails');
-            }      
+            $this->validateProvider($provider); 
          }
 
         private function validateCheckbox() {
@@ -36,8 +36,17 @@
             }
         }
 
+        private function validateProvider($provider) {
+            foreach($this->prohibitedProviders as $country => $prohibitedProvider) {
+                if($provider == $prohibitedProvider) {
+                    $this->addError('email-input', 'We are not accepting subscriptions from ' . $country . ' emails');
+                }
+            }
+        }
+
         private function addError($key, $val) {
             $this->errors[$key] = $val; 
         }
+
     }
 ?>

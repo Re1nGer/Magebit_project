@@ -17,7 +17,7 @@
 /* A font with custom icons */
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.eot?8kbg9f");
+  src: url("./fonts/icomoon.eot?8kbg9f");
   src: url("../fonts/icomoon.eot?8kbg9f#iefix") format("embedded-opentype"),
     url("../fonts/icomoon.ttf?8kbg9f") format("truetype"),
     url("../fonts/icomoon.woff?8kbg9f") format("woff"),
@@ -67,10 +67,6 @@
   opacity: 0.3;
 }
 
-.social-buttons > *:hover span {
-  color: var(--color-primary-white);
-  opacity: 1;
-}
 .social-button#facebook:hover {
   background-color: var(--color-facebook-hover);
 }
@@ -101,6 +97,11 @@
 
 .social-button#youtube:active {
   background-color: var(--color-youtube-pressed);
+}
+
+.social-buttons > *:hover span {
+  opacity: 1;
+  color: var(--color-primary-white);
 }
 
 * {
@@ -353,7 +354,6 @@ hr {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  display: none;
 }
 
 /* Create a custom checkbox */
