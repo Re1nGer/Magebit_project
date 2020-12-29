@@ -42,5 +42,12 @@
             $query->execute(); 
             return $query->fetchAll();
         }
+
+        public function getByProviderName($name) {
+            $query = $this->pdo->prepare('SELECT provider from email_subscriptions WHERE provider =:provider'); 
+            $query->bindParam(':provider', $name); 
+            $query->execute(); 
+            return $query->fetchAll(); 
+        }
     }
 ?>

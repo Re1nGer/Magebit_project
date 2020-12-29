@@ -3,6 +3,7 @@
     $db = new database(); 
     $data = $db->getAllRecords();  
     $distinctProviders = $db->getDistinctProviders(); 
+    $searchByProviderName = $db->getByProviderName($_POST['search'] ?? "");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<script defer src = "Assets/javascript/table.js"></script>
 <body>
 <table id = "table">
     <tr>
@@ -23,11 +23,10 @@
     </tr>
     <tbody>
     <tr>
-    <?php foreach($data as $email){?>
+    <?php foreach($searchByProviderName ?? $data as $email){?>
         <td><?php echo htmlspecialchars($email['id']) ?></td>
         <td><?php echo htmlspecialchars($email['email']) ?></td>
         <td><?php echo htmlspecialchars($email['provider']) ?></td>
-        <td><button id = "delete" data-id="<?php echo $email['id'];?>">X</button></td>
     </tr>
     <?php } ?>
     </tbody>
@@ -38,9 +37,18 @@
     <?php }?>
 
 </div>
-<div>
-    <input id = "search" type = "text">
-</div>
+<form action = "/table/search" method = "POST" >
+    <label for = "search">Search</label>
+    <input name = "search" id = "search" type = "text">
+    <button type = "submit">Search</button>
+</form>
+
+<form action = "/table/deleteRecord" method = "POST">
+<label for = "delete">Delete</label>
+    <input id = "delete" type = "text">
+    <button type = "submit">Delete</button>
+</form>
+
     
 </body>
 </html>
