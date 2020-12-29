@@ -3,7 +3,6 @@ require_once 'database.class.php';
 require_once 'emailValidation.class.php';
 
     class router {
-
         function __construct() {
             $this->resolve();
         }
@@ -20,13 +19,16 @@ require_once 'emailValidation.class.php';
                 $id = ($_POST['id']); 
                 $db->deleteRecordById($id);
                 include './Views/table.php';
+                return;
                 }
             }
 
             if($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/table/search') {
                 $db = new database();
-                $soughtProvider = $_GET['provider']; 
+                $soughtProvider = $_POST['search']; 
                 $db->getByProviderName($soughtProvider);
+		        include "Views/table.php";
+		        return;
             }
             
             if($_SERVER['REQUEST_METHOD'] === "GET") {
@@ -43,7 +45,8 @@ require_once 'emailValidation.class.php';
 			    } else {
 			        $db->insertRecord($_POST['email-input']); 
 			        include './Views/successful_page.php';	
-			    }	 
+                }
+                return;	 
 		   	
             }
 

@@ -1,9 +1,9 @@
 <?php 
 
     class emailValidation {
-        protected $data; 
-        protected $errors = []; 
-        protected $prohibitedProviders = array("Columbia" => "co"); 
+        private $data; 
+        private $errors = []; 
+        private $prohibitedProviders = array("Columbia" => "co"); 
 
         
         public function __construct($post_data) {

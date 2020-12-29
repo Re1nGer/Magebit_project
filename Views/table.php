@@ -2,8 +2,12 @@
     require_once 'Classes/database.class.php'; 
     $db = new database(); 
     $data = $db->getAllRecords();  
-    $distinctProviders = $db->getDistinctProviders(); 
-    $searchByProviderName = $db->getByProviderName($_POST['search'] ?? "");
+    $distinctProviders = $db->getDistinctProviders(); 	
+    if(!empty($_POST['search'])){
+	$searchByProviderName = $db->getByProviderName($_POST['search'] ?? "");
+	} else {
+		$searchProvider = "";
+	}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +23,6 @@
         <th>Id</th>
         <th>Email</th>
         <th>Provider</th>
-        <th>Delete</th>
     </tr>
     <tbody>
     <tr>
@@ -33,21 +36,26 @@
 </table>
 <div id = "button_provider">
     <?php foreach($distinctProviders as $email){?>
-    <button><?php echo htmlspecialchars($email['provider']) ?></button>
+      <button name = "search" type = "submit" form = "searchByButton" value ="<?php echo htmlspecialchars($email['provider']) ?>"><?php echo htmlspecialchars($email['provider']) ?></button>
     <?php }?>
-
 </div>
-<form action = "/table/search" method = "POST" >
+
+<form action = "/table/search" method = "POST" id="search">
     <label for = "search">Search</label>
     <input name = "search" id = "search" type = "text">
-    <button type = "submit">Search</button>
+    <button type = "submit">Search By Provider Name</button>
 </form>
 
 <form action = "/table/deleteRecord" method = "POST">
 <label for = "delete">Delete</label>
     <input id = "delete" type = "text">
-    <button type = "submit">Delete</button>
+    <button type = "submit">Delete By Id</button>
 </form>
+
+<form action = "/table/search" method = "POST" id="searchByButton" />
+<button><a href = "/table">Show All Records</a></button>
+    
+
 
     
 </body>
