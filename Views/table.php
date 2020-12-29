@@ -18,7 +18,7 @@
     <title>Document</title>
 </head>
 <body>
-<table id = "table">
+<table>
     <tr>
         <th>Id</th>
         <th>Email</th>
@@ -34,7 +34,7 @@
     <?php } ?>
     </tbody>
 </table>
-<div id = "button_provider">
+<div>
     <?php foreach($distinctProviders as $email){?>
       <button name = "search" type = "submit" form = "searchByButton" value ="<?php echo htmlspecialchars($email['provider']) ?>"><?php echo htmlspecialchars($email['provider']) ?></button>
     <?php }?>
@@ -54,9 +54,6 @@
 
 <form action = "/table/search" method = "POST" id="searchByButton" />
 <button><a href = "/table">Show All Records</a></button>
-    
 
-
-    
 </body>
 </html>

@@ -46,15 +46,8 @@ require_once 'emailValidation.class.php';
 			        $db->insertRecord($_POST['email-input']); 
 			        include './Views/successful_page.php';	
                 }
-                return;	 
-		   	
+                return;
             }
-
-            
-            
         }
-
-
-       
     }
 ?>

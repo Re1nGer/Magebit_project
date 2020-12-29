@@ -29,7 +29,7 @@
         <form autocomplete = "off" action = "/post" method ="POST" id ="form">
         <div class="wrapper">
           <div class="input-wrapper">
-            <input value = "<?php echo htmlspecialchars($_POST['email-input'] ?? '')?>" name = "email-input" id="input-validation" type="text" placeholder="Type your email address here ..." required/>
+            <input value = "<?php echo htmlspecialchars($_POST['email-input'] ?? '')?>" name = "email-input" type="text" placeholder="Type your email address here ..." required/>
           </div>
           <button name = 'submit' type = "submit" class="icon-ic_arrow"></button>
         </div>

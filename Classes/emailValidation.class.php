@@ -5,7 +5,6 @@
         private $errors = []; 
         private $prohibitedProviders = array("Columbia" => "co"); 
 
-        
         public function __construct($post_data) {
             $this->data = $post_data; 
         }
@@ -47,6 +46,5 @@
         private function addError($key, $val) {
             $this->errors[$key] = $val; 
         }
-
     }
 ?>
