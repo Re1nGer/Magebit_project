@@ -5,8 +5,6 @@
     $distinctProviders = $db->getDistinctProviders(); 	
     if(!empty($_POST['search'])){
 	$searchByProviderName = $db->getByProviderName($_POST['search'] ?? "");
-	} else {
-		$searchProvider = "";
 	}
 ?>
 
@@ -48,7 +46,7 @@
 
 <form action = "/table/deleteRecord" method = "POST">
 <label for = "delete">Delete</label>
-    <input id = "delete" type = "text">
+    <input name = "id" id = "delete" type = "text">
     <button type = "submit">Delete By Id</button>
 </form>
 

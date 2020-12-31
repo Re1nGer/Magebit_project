@@ -1,5 +1,5 @@
 <?php 
-    include ('constants.php'); 
+    include ('./Constants/constants.php'); 
     class database {
         private $host = DB_HOST;
         private $user = DB_USER;
@@ -7,7 +7,7 @@
         private $name = DB_NAME;
         private $pdo;
 
-        function __construct() { 
+       public function __construct() { 
 
             try{
                 $this->pdo = new PDO('mysql:host='. $this->host .';dbname='. $this->name, $this->user, $this->pass); 
@@ -44,7 +44,7 @@
         }
 
         public function getByProviderName($name) {
-            $query = $this->pdo->prepare('SELECT provider from email_subscriptions WHERE provider =:provider'); 
+            $query = $this->pdo->prepare('SELECT * from email_subscriptions WHERE provider =:provider'); 
             $query->bindParam(':provider', $name); 
             $query->execute(); 
             return $query->fetchAll(); 

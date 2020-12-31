@@ -1,6 +1,5 @@
 <?php 
-
-    class emailValidation {
+    class Validation {
         private $data; 
         private $errors = []; 
         private $prohibitedProviders = array("Columbia" => "co"); 
@@ -23,7 +22,7 @@
                 $this->addError('email-input', 'email cannot be empty'); 
             }  
             if(!filter_var($input_value, FILTER_VALIDATE_EMAIL)) {
-                $this->addError('email-input', "email must be valid"); 
+                $this->addError('email-input', "Email must be valid"); 
                 }
             $this->validateProvider($provider); 
          }
