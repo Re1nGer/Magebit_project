@@ -15,12 +15,11 @@ require_once 'Validation.class.php';
 
             if($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/table/deleteRecord') {
                 $db = new database();
-                if(isset($_POST['id'])) {
                 $id = ($_POST['id']); 
                 $db->deleteRecordById($id);
                 include './Views/table.php';
                 return;
-                }
+                
             }
 
             if($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/table/search') {

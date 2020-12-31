@@ -398,12 +398,19 @@ hr {
   transform: rotate(45deg);
 }
 
-@media only screen and (max-width: 600px) {
+@media (min-width: 320px) and (max-width: 480px) {
+  /* CSS */
+
   nav {
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
     background: var(--color-primary-white);
+  }
+
+  main {
+    padding: 0 40px;
+    padding-top: 100px;
   }
 
   .first-half {
@@ -467,10 +474,109 @@ hr {
   hr {
     margin: 30px 1.2rem;
   }
+
+  .terms-services {
+    text-align: left;
+    margin-left: 3rem;
+  }
+
+  .checkbox-container {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+
+  .container {
+    margin-left: 1rem;
+  }
+  .social-buttons {
+    margin-bottom: 30px;
+  }
+
+  .wrapper {
+    margin: 0;
+  }
+
+  .wrapper span {
+    right: 3.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  /* CSS */
+  nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    background: var(--color-primary-white);
+  }
+
   main {
-    padding: 0 120px;
+    padding: 0 40px;
     padding-top: 100px;
   }
+
+  .first-half {
+    flex: 0 1 100vw;
+    background-image: url("../icons&pictures/image_summer\ \(1\).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+  }
+
+  .second-half {
+    display: none;
+  }
+  .subscribe {
+    margin-top: 0;
+    text-align: center;
+    background: linear-gradient(
+      180deg,
+      var(--color-primary-white) 0%,
+      var(--color-primary-gradient) 100%
+    );
+  }
+
+  .successful_icon_wrapper {
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+  .title-1 {
+    font-size: 24px;
+    line-height: 34px;
+    text-align: left;
+    margin: 30px 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .title-2 {
+    text-align: left;
+    padding-top: 10px;
+    margin-left: 1.5rem;
+  }
+
+  .title-2 p {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0;
+  }
+
+  input[type="text"] {
+    margin: 20px;
+    padding: 18px 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-grow: 1;
+  }
+
+  input[type="text"]::placeholder {
+    font-size: 16px;
+  }
+
+  hr {
+    margin: 30px 1.2rem;
+  }
+
   .terms-services {
     text-align: left;
     margin-left: 3rem;
