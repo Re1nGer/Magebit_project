@@ -1,23 +1,24 @@
 <?php 
 require_once 'database.class.php';
-require_once 'Validation.class.php';
+require_once 'validation.class.php';
 
 
     class router {
       private $requests;
 
 
-        function __construct() {
+       public function __construct() {
+            $this->requests = ['/table' => 'table', '/' => 'getSubscriptionPage', 
+            '/post' => 'postSubscription', '/table/deleteRecord' => 'tableDeleteRecord', '/table/search' => 'tableSearch'];
             $this->resolve();
         }
 
        private function resolve() {
-        $requests = ['/table' => 'table', '/' => 'getSubscriptionPage', 
-        '/post' => 'postSubscription', '/table/deleteRecord' => 'tableDeleteRecord', '/table/search' => 'tableSearch'];
-
-        foreach($requests as $request => $func) {
+         foreach($this->requests as $request => $func) {
+            if($_SERVER['REQUEST_URI'] === $request) {
             call_user_func(array($this, $func));
-             }
+                }
+            }
         }
 
         private function table() {
@@ -40,7 +41,7 @@ require_once 'Validation.class.php';
          private function postSubscription() {
             if($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/post') {
                 $db = new database(); 
-                $validation = new Validation($_POST);
+                $validation = new validation($_POST);
 		        $errors = $validation->validateForm(); 
 		        if(!empty($errors)) {
 			    	include './Views/subscription_page.php'; 

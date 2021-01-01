@@ -1,5 +1,5 @@
 <?php 
-    class Validation {
+    class validation {
         private $data; 
         private $errors = []; 
         private $prohibitedProviders = array("Columbia" => "co"); 
