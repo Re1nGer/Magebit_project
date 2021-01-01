@@ -19,7 +19,7 @@
             $input_value = $this->data['email-input']; 
             $provider = substr($input_value, strlen($input_value)-2, 2); 
             if(empty($input_value)) {
-                $this->addError('email-input', 'email cannot be empty'); 
+                $this->addError('email-input', 'Email cannot be empty'); 
             }  
             if(!filter_var($input_value, FILTER_VALIDATE_EMAIL)) {
                 $this->addError('email-input', "Email must be valid"); 
