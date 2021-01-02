@@ -17,8 +17,11 @@ require_once 'validation.class.php';
          foreach($this->requests as $request => $func) {
             if($_SERVER['REQUEST_URI'] === $request) {
             call_user_func(array($this, $func));
-                }
+            return;
+                } 
             }
+            header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+		    include("Views/404.php");
         }
 
         private function table() {
