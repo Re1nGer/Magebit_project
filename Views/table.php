@@ -1,11 +1,7 @@
 <?php 
     require_once 'Classes/database.class.php'; 
-    $db = new database(); 
     $data = $db->getAllRecords();  
     $distinctProviders = $db->getDistinctProviders(); 	
-    if(!empty($_POST['search'])){
-	$searchByProviderName = $db->getByProviderName($_POST['search'] ?? "");
-	}
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +17,15 @@
         <th>Id</th>
         <th>Email</th>
         <th>Provider</th>
+        <th>Date</th>
     </tr>
     <tbody>
     <tr>
-    <?php foreach($searchByProviderName ?? $data as $email){?>
+    <?php foreach($nameFirst ?? $searchByProviderName ?? $data as $email){?>
         <td><?php echo htmlspecialchars($email['id']) ?></td>
         <td><?php echo htmlspecialchars($email['email']) ?></td>
         <td><?php echo htmlspecialchars($email['provider']) ?></td>
+        <td><?php echo htmlspecialchars($email['Date']) ?></td>
     </tr>
     <?php } ?>
     </tbody>
@@ -52,6 +50,8 @@
 
 <form action = "/table/search" method = "POST" id="searchByButton" />
 <button><a href = "/table">Show All Records</a></button>
+
+<button form = "searchByButton" name = "sortByName" type = "submit">Sort by Name</button>
 
 </body>
 </html>

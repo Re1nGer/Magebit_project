@@ -18,9 +18,15 @@
         }
 
        public function getAllRecords() {
-            $query = $this->pdo->prepare('SELECT * FROM email_subscriptions ORDER BY id'); 
+            $query = $this->pdo->prepare('SELECT * FROM email_subscriptions ORDER BY Date'); 
             $query->execute(); 
             return $query->fetchAll(); 
+        }
+
+        public function getAllRecordsNameFirst() {
+            $query = $this->pdo->prepare('SELECT * FROM email_subscriptions ORDER BY email'); 
+            $query->execute(); 
+            return $query->fetchAll();
         }
 
        public function deleteRecordById($id) {

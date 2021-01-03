@@ -66,8 +66,13 @@ require_once 'validation.class.php';
       private function tableSearch() {
         if($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/table/search') {
             $db = new database();
-            $soughtProvider = $_POST['search']; 
-            $db->getByProviderName($soughtProvider);
+            $soughtProvider = $_POST['search'] ?? ''; 
+            if(isset($_POST['sortByName'])) {
+               $nameFirst =  $db->getAllRecordsNameFirst();
+                include "Views/table.php";
+                return;
+            }
+            $searchByProviderName = $db->getByProviderName($soughtProvider);
             include "Views/table.php";
             return;
         }
