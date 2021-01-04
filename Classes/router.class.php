@@ -26,6 +26,7 @@ require_once 'validation.class.php';
 
         private function table() {
             if($_SERVER['REQUEST_METHOD'] === 'GET' && $_SERVER['REQUEST_URI'] === '/table') {
+                $db = new database();
                 include './Views/table.php';
                 return;  
              }
