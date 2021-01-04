@@ -52,9 +52,6 @@
 <button><a href = "/table">Show All Records</a></button>
 
 <button form = "searchByButton" name = "sortByName" type = "submit">Sort by Name</button>
-<form action = "table/exportCSV" method = "POST" id = "csv">
-        <button type = "submit">Export as CSV</button>
-</form>
 
 </body>
 </html>
